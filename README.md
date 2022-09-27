@@ -2,13 +2,13 @@
 <br />
 <div align="center">
   <a href="https://github.com/jackmulligan-ire/altas">
-    <img src="readme-images/altas-logo.png" alt="Altas Logo">
+    <img src="readme-images/altas-logo.png" alt="Altas Logo" height=250 width=250>
   </a>
 
 <h3 align="center">Altas</h3>
 
   <p align="center">
-    Package to scrape and transcribe content from a video platforn.
+    Python package to scrape webpages and transcribe video content from a video sharing platform.
   </p>
 </div>
 
