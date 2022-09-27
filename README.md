@@ -59,7 +59,7 @@ The following folder structure must be created to use altas.
 
 ### Creating an initial channel sample
 
-The `channel-sample.csv` file must be initialised with the following columns: `id,channel_name,date_scraped`.
+The `channel-sample.csv` file must be initialised with the following schema: `id,channel_name,date_scraped`.
 
 These correspond as follows:
 
@@ -93,39 +93,41 @@ The end result of set up is a `credentials.json` file required to make API reque
 
 ### Scraping channels
 
-To scrape the channels in `channel-sample.csv`, run the following command from the top-level directory:
+To scrape the channels in `channel-sample.csv`, run the following command from the top-level directory: `python -m altas scrape_channel_pages`
 
-`python -m altas scrape_channel_pages`
+This command will scrape all channels that have no entry for date_scraped in `channel-sample.csv` . This creates a `data\channel-data.csv` file with the following schema: 
 
-This command will scrape all channels that have no entry for date_scraped in `channel-sample.csv` . This creates a `data\channel-data.csv` file with the following schema: `id,title,date(YYYY-MM-DD),length(H:MM:SS),views,channel_name`. The file is created new only if it's not present in the data folder, with subsequent command calls appending to the existing `video-page-data.csv` file.
+`id,title,date(YYYY-MM-DD),length(H:MM:SS),views,channel_name`
 
-Once a channel has been scraped, the current date is entered under the `date_scraped` column of the `channel-sample.csv` file. This will prevent the channel from being scraped again if the command is run again. The timestamp can simply be removed from the `channel-sample.csv` file to perform a second scraping.
+The file is created new only if it's not present in the data folder, with subsequent command calls appending to the existing `video-page-data.csv` file.
 
-Each `id` within `video-page-data.csv` must be unique, preventing the same video from a channel being scraped more than once.
+Once a channel has been scraped, the current date is entered under the `date_scraped` column of the `channel-sample.csv` file. This will prevent the channel from being scraped again if the command is run again. The timestamp can simply be removed from the `channel-sample.csv` file to perform a second scraping. Each `id` within `video-page-data.csv` must be unique, preventing the same video from a channel being scraped more than once.
 
 ### Scraping videos
 
-To the scrape each video page in `channel-data.csv`, run the following command from the top-level directory:
+To the scrape each video page in `channel-data.csv`, run the following command from the top-level directory: `python -m altas scrape_video_pages`
 
-`python -m altas scrape_video_pages`
+This command will create a `data\video-page-data.csv` with the following schema:
 
-This command will create a `data\video-page-data.csv` with the following schema: `id,video_url,title,date,channel,description,category,hashtags`. The file is created new only if it's not present in the data folder, with subsequent command calls appending to the existing `video-page-data.csv` file.
+`id,video_url,title,date,channel,description,category,hashtags` 
 
-Each `id` within `video-page-data.csv` must be unique, preventing the same video page from being scraped more than once.
+The file is created new only if it's not present in the data folder, with subsequent command calls appending to the existing `video-page-data.csv` file. Each `id` within `video-page-data.csv` must be unique, preventing the same video page from being scraped more than once.
 
 ### Transcribing videos
 
-To create a transcription of a video, run the following command from the top-level directory:
+To create a transcription of a video, run the following command from the top-level directory: `python -m altas transcribe_videos`
 
-`python -m altas transcribe_videos`
+When this command is run for the first time, it will create a `data\video-transcription-data.csv` file with the following schema: 
 
-When this command is run for the first time, it will create a `data\video-transcription-data.csv` file with the following schema: `id,transcript`. The file is created only if it's not present in the data folder, with subsequents command calls appending to the existing `video-transcription-data.csv` file. Each id within `video-transcription-data.csv` must be unique, preventing the same video file from being transcribed more than once.
+`id,transcript`
 
-### Running the pipeline end to end.
+The file is created only if it's not present in the data folder, with subsequents command calls appending to the existing `video-transcription-data.csv` file. Each id within `video-transcription-data.csv` must be unique, preventing the same video file from being transcribed more than once.
+
+### Running the pipeline end to end
 
 It's also possible to run through each of the three stages as a pipeline. Simply enter the desired channel ids into the `channel-sample.csv` file, then run `bash run-pipeline.sh` from the top-level directory. For a channel or channels with longer video histories, this will take a long time to run to completion.
 
-### Joining the three data tables together.
+### Joining the three data tables together
 
 The three data tables, `channel-data.csv`, `video-page-data.csv` and `video-transcription-data.csv` all share a common feature in `id`. The `id` feature is also unique for each table, serving as a primary key. This allows the three tables to be easily joined together, allowing for a complete picture of the metadata associated with each video to be constructed for analysis purposes.
 
