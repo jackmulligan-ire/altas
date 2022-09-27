@@ -16,7 +16,7 @@
 
 Altas is a Python package that was developed to gather data on a video sharing platform. The focus here was on the videos posted on the platform themselves, with speech data and metadata (e.g. video views, hashtags) gathered from each video. The aim of the package is to enable the analysis of the data gathered and to allow this to be done for a large sample of creators. Analysis questions to be answered include identifying topics discussed by each creator, determining how these topics shifted over time, as well as co-occurrence of topics.
 
-The package gathers data in three stages: In the first stage, a channel is scraped for a history of videos published using Selenium and BeautifulSoup, with the webpage associated with each video being gathered. In the second stage, each webpage associated with that video is scraped using BeautifulSoup for the URL associated with the video file as well as video metadata. Finally, the video file is downloaded and then transformed to audio, with the audio being sent up to Google Cloud Speech API. The end product is an audio transcription and its associated metadata.
+The package gathers data in three stages: In the first stage, a channel is scraped for a history of videos published using Selenium and BeautifulSoup, with the webpage associated with each video being gathered. In the second stage, each webpage associated with that video is scraped using BeautifulSoup for the URL associated with the video file as well as video metadata. Finally, the video file is downloaded and then transformed to audio, with the audio being sent up to the Google Cloud Speech API. The end product is an audio transcription and its associated metadata.
 
 Please note that this repository exists for demonstration purposes and isn't functional as the video sharing website has been anonymised. This has been done to protect the integrity of the project that continues to utilise Altas in its work. A separate, private repository is used in practice.
 
@@ -34,9 +34,9 @@ Please note that this repository exists for demonstration purposes and isn't fun
 The following is required to use the repo:
 
 - A clone of the repository: `git clone <HTTPS link/SSH link>`
-- A virtual environment manager (Anaconda/Miniconda recommended)
+- A virtual environment manager ([Anaconda/Miniconda](https://www.anaconda.com/) recommended)
 - Google Chrome or a Chromium browser and chromedriver for browser version (Windows, Mac OS) / chromedriver (Linux)
-- A Google Cloud Platform account and a credentials.json file for the Speech API.
+- A [Google Cloud Platform](https://www.cloud.google.com) account and a `credentials.json` file for the Speech API.
 
 ### Package structure
 
@@ -63,9 +63,9 @@ The `channel-sample.csv` file must be initialised with the following schema: `id
 
 These correspond as follows:
 
-- ID: The id associated with that channel on the platform (required).
-- Channel_name: An optional alias for the channel.
-- Date_scraped: Initially left blank.
+- id: The id associated with that channel on the platform (required).
+- channel_name: An optional alias for the channel.
+- date_scraped: Initially left blank.
 
 A minimum valid entry into the channel-sample.csv file is as follows : `123abcd,,`
 
@@ -99,7 +99,7 @@ This command will scrape all channels that have no entry for date_scraped in `ch
 
 `id,title,date(YYYY-MM-DD),length(H:MM:SS),views,channel_name`
 
-The file is created new only if it's not present in the data folder, with subsequent command calls appending to the existing `video-page-data.csv` file.
+The file is created new only if it's not present in the data folder, with subsequent command calls appending to the existing `channel-data.csv` file.
 
 Once a channel has been scraped, the current date is entered under the `date_scraped` column of the `channel-sample.csv` file. This will prevent the channel from being scraped again if the command is run again. The timestamp can simply be removed from the `channel-sample.csv` file to perform a second scraping. Each `id` within `video-page-data.csv` must be unique, preventing the same video from a channel being scraped more than once.
 
@@ -115,7 +115,7 @@ The file is created new only if it's not present in the data folder, with subseq
 
 ### Transcribing videos
 
-To create a transcription of a video, run the following command from the top-level directory: `python -m altas transcribe_videos`
+To create a transcription of each video in `video-page-data.csv`, run the following command from the top-level directory: `python -m altas transcribe_videos`
 
 When this command is run for the first time, it will create a `data\video-transcription-data.csv` file with the following schema: 
 
