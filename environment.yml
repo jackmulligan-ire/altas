@@ -1,0 +1,44 @@
+name: altas
+channels:
+  - defaults
+dependencies:
+  - ca-certificates=2022.4.26
+  - certifi=2021.5.30
+  - libcxx
+  - libffi=3.3
+  - ncurses=6.3
+  - openssl=1.1.1o
+  - pip
+  - python=3.9
+  - readline=8.1.2
+  - setuptools=58.0.4
+  - sqlite=3.38.3
+  - tk=8.6.11
+  - tzdata=2022a
+  - wheel=0.37.1
+  - xz=5.2.5
+  - zlib=1.2.12
+  - pip:
+      - beautifulsoup4
+      - gcloud
+      - google-api-core
+      - google-api-python-client
+      - google-auth
+      - google-auth-httplib2
+      - google-cloud-speech
+      - googleapis-common-protos
+      - ipykernel
+      - ipython
+      - ipython-genutils
+      - jupyter-client
+      - jupyter-core
+      - moviepy
+      - numpy
+      - pandas
+      - requests
+      - scikit-learn
+      - scipy
+      - selenium
+      - sklearn
+      - speechrecognition
+prefix: /opt/anaconda3/envs/altas

@@ -1,0 +1,7 @@
+__pycache__*
+data*
+.DS_Store
+environment-linux.yml
+requirements-linux.txt
+nohup.out
+.vscode
