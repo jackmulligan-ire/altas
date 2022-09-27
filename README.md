@@ -33,7 +33,7 @@ Please note that this repository exists for demonstration purposes and isn't fun
 
 The following is required to use the repo:
 
-- A clone of the repository `git clone <HTTPS link/SSH link>`
+- A clone of the repository: `git clone <HTTPS link/SSH link>`
 - A virtual environment manager (Anaconda/Miniconda recommended)
 - Google Chrome or a Chromium browser and chromedriver for browser version (Windows, Mac OS) / chromedriver (Linux)
 - A Google Cloud Platform account and a credentials.json file for the Speech API.
@@ -42,7 +42,7 @@ The following is required to use the repo:
 
 The following folder structure must be created to use altas.
 
-<!-- prettier-ignore -->
+```
 ├── altas  
 ├── data
     ├── logs                # Error logs
@@ -53,12 +53,13 @@ The following folder structure must be created to use altas.
 ├── run-pipeline.sh  
 ├── .gitignore
 └── README.md
+```
 
-.gitignore prevents the data file from being pushed to the repository.
+`.gitignore` prevents the data file from being pushed to the repository.
 
 ### Creating an initial channel sample
 
-The channel-sample.csv file must be initialised with the follow columns: `id,channel_name,date_scraped`.
+The `channel-sample.csv` file must be initialised with the following columns: `id,channel_name,date_scraped`.
 
 These correspond as follows:
 
@@ -80,7 +81,7 @@ A `requirements.txt` file is also available should you wish to use another virtu
 
 A version of [chromedriver](https://chromedriver.chromium.org/downloads) compatible with your version of Chrome must be downloaded and made available when running the program. This is best placed in the `bin` folder of your conda environment file e.g. on Mac OS `/path/to/anaconda/envs/covid-19-narrative/bin`.
 
-For Linux users, the latest version of chromedriver for your Linux distribution must be downloaded and place in a binary folder on the PATH.
+For Linux users, the latest version of chromedriver for your Linux distribution must be downloaded and placed in a binary folder on the PATH.
 
 ### Getting credentials to use the Google Cloud Speech API
 
