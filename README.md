@@ -43,14 +43,14 @@ The following is required to use the repo:
 The following folder structure must be created to use altas.
 
 ```
-├── altas  
+├── altas
 ├── data
     ├── logs                # Error logs
     ├── tmp                 # Converting video to audio
     ├── channel-sample.csv  # Channels to scrape
-├── environment.yml  
-├── requirements.txt  
-├── run-pipeline.sh  
+├── environment.yml
+├── requirements.txt
+├── run-pipeline.sh
 ├── .gitignore
 └── README.md
 ```
@@ -77,7 +77,7 @@ To activate the environment, run `conda activate altas`.
 
 A `requirements.txt` file is also available should you wish to use another virtual environment manager.
 
-### Installing chromedriver.
+### Installing chromedriver
 
 A version of [chromedriver](https://chromedriver.chromium.org/downloads) compatible with your version of Chrome must be downloaded and made available when running the program. This is best placed in the `bin` folder of your conda environment file e.g. on Mac OS `/path/to/anaconda/envs/covid-19-narrative/bin`.
 
