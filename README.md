@@ -87,7 +87,7 @@ For Linux users, the latest version of chromedriver for your Linux distribution 
 
 An account on the Google Cloud Platform is required to use [Google Cloud Speech](https://cloud.google.com/speech-to-text/). After setting up a Google Cloud Platform account, the [set up instructions](https://cloud.google.com/speech-to-text/docs/before-you-begin) for using the platform should be followed.
 
-The end result of set up is a `credentials.json` file required to make API requests, which must be available in your environment's PATH. The most convenient way to do this is to add the line `export GOOGLE_APPLICATION_CREDENTIALS="path\to\credentials.json"` directly to your `~\.bash_profile` \ `~\.bashrc` file (or equivalent for your shell).
+The end result of set up is a `credentials.json` file required to make API requests, which must be available in your environment's PATH. The most convenient way to do this is to add the line `export GOOGLE_APPLICATION_CREDENTIALS="path\to\credentials.json"` directly to your `~\.bash_profile` \ `~\.bashrc` file (or equivalent for your system's shell).
 
 ## Using Altas
 
