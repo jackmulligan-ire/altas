@@ -79,7 +79,7 @@ A `requirements.txt` file is also available should you wish to use another virtu
 
 ### Installing chromedriver
 
-A version of [chromedriver](https://chromedriver.chromium.org/downloads) compatible with your version of Chrome must be downloaded and made available when running the program. This is best placed in the `bin` folder of your conda environment file e.g. on Mac OS `/path/to/anaconda/envs/covid-19-narrative/bin`.
+A version of [chromedriver](https://chromedriver.chromium.org/downloads) compatible with your version of Chrome must be downloaded and made available when running the program. This is best placed in the `bin` folder of your conda environment file e.g. on Mac OS `/path/to/anaconda/envs/altas/bin`.
 
 For Linux users, the latest version of chromedriver for your Linux distribution must be downloaded and placed in a binary folder on the PATH.
 
@@ -95,7 +95,7 @@ The end result of set up is a `credentials.json` file required to make API reque
 
 To scrape the channels in `channel-sample.csv`, run the following command from the top-level directory: `python -m altas scrape_channel_pages`
 
-This command will scrape all channels that have no entry for date_scraped in `channel-sample.csv` . This creates a `data\channel-data.csv` file with the following schema: 
+This command will scrape all channels that have no entry for date_scraped in `channel-sample.csv` . This creates a `data\channel-data.csv` file with the following schema:
 
 `id,title,date(YYYY-MM-DD),length(H:MM:SS),views,channel_name`
 
@@ -109,7 +109,7 @@ To the scrape each video page in `channel-data.csv`, run the following command f
 
 This command will create a `data\video-page-data.csv` with the following schema:
 
-`id,video_url,title,date,channel,description,category,hashtags` 
+`id,video_url,title,date,channel,description,category,hashtags`
 
 The file is created new only if it's not present in the data folder, with subsequent command calls appending to the existing `video-page-data.csv` file. Each `id` within `video-page-data.csv` must be unique, preventing the same video page from being scraped more than once.
 
@@ -117,7 +117,7 @@ The file is created new only if it's not present in the data folder, with subseq
 
 To create a transcription of each video in `video-page-data.csv`, run the following command from the top-level directory: `python -m altas transcribe_videos`
 
-When this command is run for the first time, it will create a `data\video-transcription-data.csv` file with the following schema: 
+When this command is run for the first time, it will create a `data\video-transcription-data.csv` file with the following schema:
 
 `id,transcript`
 
