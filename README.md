@@ -31,6 +31,63 @@ Please note that this repository exists for demonstration purposes and isn't fun
 
 ## Getting Started
 
+The following is required to use the repo:
+
+- A clone of the repository `git clone <HTTPS link/SSH link>`
+- A virtual environment manager (Anaconda/Miniconda recommended)
+- Google Chrome or a Chromium browser and chromedriver for browser version (Windows, Mac OS) / chromedriver (Linux)
+- A Google Cloud Platform account and a credentials.json file for the Speech API.
+
+### Package structure
+
+The following folder structure must be created to use altas.
+
+<!-- prettier-ignore -->
+├── altas  
+├── data
+    ├── logs                # Error logs
+    ├── tmp                 # Converting video to audio
+    ├── channel-sample.csv  # Channels to scrape
+├── environment.yml  
+├── requirements.txt  
+├── run-pipeline.sh  
+├── .gitignore
+└── README.md
+
+.gitignore prevents the data file from being pushed to the repository.
+
+### Creating an initial channel sample
+
+The channel-sample.csv file must be initialised with the follow columns: `id,channel_name,date_scraped`.
+
+These correspond as follows:
+
+- ID: The id associated with that channel on the platform (required).
+- Channel_name: An optional alias for the channel.
+- Date_scraped: Initially left blank.
+
+A minimum valid entry into the channel-sample.csv file is as follows : `123abcd,,`
+
+### Installing the virtual environment
+
+To install the environment using conda, simply run `conda env create -f environment.yml`
+
+To activate the environment, run `conda activate altas`.
+
+A `requirements.txt` file is also available should you wish to use another virtual environment manager.
+
+### Installing chromedriver.
+
+A version of [chromedriver](https://chromedriver.chromium.org/downloads) compatible with your version of Chrome must be downloaded and made available when running the program. This is best placed in the `bin` folder of your conda environment file e.g. on Mac OS `/path/to/anaconda/envs/covid-19-narrative/bin`.
+
+For Linux users, the latest version of chromedriver for your Linux distribution must be downloaded and place in a binary folder on the PATH.
+
+### Getting credentials to use the Google Cloud Speech API
+
+An account on the Google Cloud Platform is required to use [Google Cloud Speech](https://cloud.google.com/speech-to-text/). After setting up a Google Cloud Platform account, the [set up instructions](https://cloud.google.com/speech-to-text/docs/before-you-begin) for using the platform should be followed.
+
+The end result of set up is a `credentials.json` file required to make API requests, which must be available in your environment's PATH. The most convenient way to do this is to add the line `export GOOGLE_APPLICATION_CREDENTIALS="path\to\credentials.json"` directly to your `~\.bash_profile` \ `~\.bashrc` file (or equivalent for your shell).
+
 ## Using Altas
 
 ## Acknowledgements
